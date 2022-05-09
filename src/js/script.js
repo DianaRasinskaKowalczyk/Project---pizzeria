@@ -262,6 +262,7 @@
 
       /* add new property "priceSingle" to thisProduct */
       thisProduct.priceSingle = price;
+      thisProduct.price = price;
 
       /* update calculated price in the HTML */
       thisProduct.dom.priceElem.innerHTML = price;
@@ -281,7 +282,7 @@
         name: thisProduct.data.name,
         amount: thisProduct.amountWidget.value,
         priceSingle: thisProduct.priceSingle,
-        price: thisProduct.priceSingle * thisProduct.amountWidget.value,
+        price: thisProduct.price,
         params: thisProduct.prepareCartProductParams(),
       };
 
@@ -323,9 +324,7 @@
   
           const optionSelected = (formData[paramId] && formData[paramId].includes(optionId));
           if(optionSelected){
-            params[paramId].options = {
-              optionId: option.label,
-            }
+            params[paramId].options[optionID] = option.label;
           }
         }
       }
@@ -446,8 +445,13 @@
 
       /* DONE add element to menu */
       thisCart.dom.productList.appendChild(generatedDOM);
+
+      thisCart.products.push(menuProduct);
+      console.log('thisCart.products:', thisCart.products);
     }
   }
+
+ 
 
   const app = {
     initMenu: function(){
