@@ -116,7 +116,7 @@ export const settings = {
 
   db: {
     url: '//localhost:3131',
-    product: 'product',
+    products: 'products',
     order: 'order',
     booking: 'booking',
     event: 'event',
