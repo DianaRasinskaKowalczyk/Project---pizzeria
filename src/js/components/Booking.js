@@ -1,6 +1,5 @@
-import { select, templates, settings, classNames } from '../settings.js';
+import { select, templates } from '../settings.js';
 import AmountWidget from './AmountWidget.js';
-import utils from '../utils.js';
 
 
 class Booking{
@@ -43,9 +42,9 @@ class Booking{
 
     }),
 
-    thisBooking.dom.hoursAmount = new AmountWidget(thisBooking.dom.hoursAmount);
+    thisBooking.hoursAmount = new AmountWidget(thisBooking.dom.hoursAmount);
 
-    thisBooking.dom.peopleAmount.addEventListener('click', function(){
+    thisBooking.dom.hoursAmount.addEventListener('click', function(){
 
     });
   }

@@ -6,8 +6,6 @@ import Booking from './components/Booking.js';
   
   
 
- 
-
 const app = {
   initPages: function(){
     const thisApp = this;
