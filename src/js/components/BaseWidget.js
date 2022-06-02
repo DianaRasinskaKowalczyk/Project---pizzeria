@@ -1,4 +1,4 @@
-
+import { settings } from '../settings.js';
 
 class BaseWidget{
   constructor(wrapperElement, initialValue){
@@ -22,7 +22,7 @@ class BaseWidget{
 
     const newValue = thisWidget.parseValue(value);
 
-    // thisWidget.correctValue = settings.amountWidget.defaultValue;  - przeszło do BaseWidget
+    thisWidget.correctValue = settings.amountWidget.defaultValue;
 
     /* DONE Add validation */
     if(newValue !== thisWidget.correctValue && 
