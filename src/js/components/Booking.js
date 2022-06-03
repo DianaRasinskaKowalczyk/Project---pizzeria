@@ -18,7 +18,7 @@ class Booking{
 
     /* NEW - to keep info about selected table */
     thisBooking.selectedTable = {};
-    // console.log(thisBooking.selectedTable);
+    console.log(thisBooking.selectedTable);
   }
 
   getData(){
@@ -227,6 +227,7 @@ class Booking{
     const thisBooking = this;
 
     const clickedElement = event.target;
+    event.preventDefault();
 
     /* NEW find table id */
     const tableId = clickedElement.getAttribute('data-table');
@@ -236,11 +237,12 @@ class Booking{
 
       /* NEW check if it's not booked */
       if(!clickedElement.classList.contains(classNames.booking.tableBooked)){
-
+  
         /* NEW if it's not booked then this table is a selected table */ 
+        clickedElement.classList.add(classNames.booking.tableSelected);
         thisBooking.selectedTable = tableId;
         console.log('tableId', tableId);
-
+  
         /* NEW if it's booked - show alert */
       }else{
         alert('Ten stolik jest zajęty');
@@ -252,7 +254,7 @@ class Booking{
 
       /* NEW if it's a clicked table - add class selected - this is the selected table */
       if(table === thisBooking.selectedTable){
-        table.classList.add(classNames.booking.tableSelected);
+        clickedElement.classList.add(classNames.booking.tableSelected);
         thisBooking.selectedTable = tableId;
 
         /* NEW if it's not a selected table - remove class selected */
