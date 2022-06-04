@@ -109,7 +109,7 @@ class Booking{
       }
     }
 
-    console.log(thisBooking.booked);
+    // console.log(thisBooking.booked);
 
     thisBooking.updateDOM();
   }
@@ -226,47 +226,31 @@ class Booking{
   initTables(event){
     const thisBooking = this;
 
+    /* NEW find clicked element */
     const clickedElement = event.target;
     event.preventDefault();
 
-    /* NEW find table id */
+    /* NEW find table id of clicked table */
     const tableId = clickedElement.getAttribute('data-table');
+    console.log('tableId', tableId);
 
     /* NEW if a table was clicked */
     if(tableId){
-
-      /* NEW check if it's not booked */
-      if(!clickedElement.classList.contains(classNames.booking.tableBooked)){
-  
-        /* NEW if it's not booked then this table is a selected table */ 
-        clickedElement.classList.add(classNames.booking.tableSelected);
-        thisBooking.selectedTable = tableId;
-        console.log('tableId', tableId);
-  
-        /* NEW if it's booked - show alert */
-      }else{
+      if(clickedElement.classList.contains(classNames.booking.tableBooked)){
         alert('Ten stolik jest zajęty');
+      }else{
+        thisBooking.tableSelected = tableId;
+        clickedElement.classList.add(classNames.booking.tableSelected);
       }
     }
 
-    /* NEW for every table */
     for(const table of thisBooking.dom.tables){
-
-      /* NEW if it's a clicked table - add class selected - this is the selected table */
-      if(table === thisBooking.selectedTable){
-        clickedElement.classList.add(classNames.booking.tableSelected);
-        thisBooking.selectedTable = tableId;
-
-        /* NEW if it's not a selected table - remove class selected */
-      } else{
+      if(table !== clickedElement){
         table.classList.remove(classNames.booking.tableSelected);
-        thisBooking.selectedTable = null;
-      }
-
-      /* NEW if this table was already selected - remove class selected */
-      if(table.classList.contains(classNames.booking.tableSelected)){
+        thisBooking.tableSelected = null;
+      }else if(clickedElement.classList.contains(classNames.booking.tableSelected)){
         clickedElement.classList.remove(classNames.booking.tableSelected);
-        thisBooking.selectedTable = null;
+        thisBooking.tableSelected = null;
       }
     }
   }
