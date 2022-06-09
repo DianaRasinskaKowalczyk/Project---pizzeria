@@ -12,6 +12,7 @@ export const select = {
     cart: '#cart',
     pages: '#pages',
     booking: '.booking-wrapper',
+    homePage: '.home-wrapper',
   },
   all: {
     menuProducts: '#product-list > .product',
@@ -41,6 +42,9 @@ export const select = {
       input: 'input[type="range"]',
       output: '.output',
     },
+    carousel: {
+      wrapper: '.main-carousel',
+    }
   },
   booking: {
     peopleAmount: '.people-amount',
@@ -50,7 +54,7 @@ export const select = {
     phone: '.order-confirmation [name="phone"]',
     address: '.order-confirmation [name="address"]',
     starters: '[name="starter"]',
-    bookingSubmit: '.booking-form [type="submit"]',
+    bookingSubmit: '.booking-form',
   },
   
   nav: {

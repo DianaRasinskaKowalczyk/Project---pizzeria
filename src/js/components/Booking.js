@@ -17,7 +17,7 @@ class Booking{
     thisBooking.getData();
 
     /* NEW - to keep info about selected table */
-    thisBooking.selectedTable;
+    thisBooking.tableSelected;
     console.log(thisBooking.selectedTable);
   }
 
@@ -229,7 +229,7 @@ class Booking{
 
     thisBooking.dom.form.addEventListener('submit', function(event){
       event.preventDefault();
-      thisBooking.sendOrder();
+      thisBooking.sendBooking();
     });
   }
 
@@ -270,7 +270,8 @@ class Booking{
   }
  
   /* NEW make function sendOrder */
-  sendBooking(){
+  sendBooking(event){
+    event.preventDefault();
     const thisBooking = this;
 
     const url = settings.db.url + '/' + settings.db.bookings;
