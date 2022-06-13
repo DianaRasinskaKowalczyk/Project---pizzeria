@@ -1,4 +1,5 @@
 import { select, templates } from '../settings.js';
+// import {app} from '../app.js';
 
 class Home{
   constructor(element){
@@ -6,6 +7,7 @@ class Home{
 
     thisHome.render(element);
     thisHome.initCarousel();
+    thisHome.initLink();
   }
 
   render(element){
@@ -18,6 +20,8 @@ class Home{
     thisHome.dom.wrapper.innerHTML = generatedHTML;
 
     thisHome.dom.wrapper.carouselWidget = thisHome.dom.wrapper.querySelector(select.widgets.carousel.wrapper);
+    thisHome.dom.wrapper.onlineOrder = thisHome.dom.wrapper.querySelector(select.home.onlineOrder);
+    thisHome.dom.wrapper.bookTable = thisHome.dom.wrapper.querySelector(select.home.bookTable);
   }
 
   initCarousel(){
@@ -30,6 +34,19 @@ class Home{
       autoPlay: 3000,
       wrapAround: true,
       prevNextButtons: false,
+    });
+  }
+
+  initLink(){
+    const thisHome = this;
+    thisHome.dom.wrapper.onlineOrder.addEventListener('click', function(){
+      thisHome.activatePage('order');
+      window.location.hash = '#/' +'/order';
+    });
+
+    thisHome.dom.wrapper.bookTable.addEventListener('click', function(){
+      thisHome.activatePage('booking');
+      window.location.hash = '#/' + '/booking';
     });
   }
 }

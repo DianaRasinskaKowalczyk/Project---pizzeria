@@ -219,9 +219,11 @@ class Booking{
     });
 
     thisBooking.dom.wrapper.addEventListener('updated', function(){
+      for (let table of thisBooking.dom.tables) {
+        table.classList.remove(classNames.booking.tableSelected);
+      }
       thisBooking.updateDOM();
     });
-
     /* NEW start initTables when there's a click on tablesContainer */
     thisBooking.dom.tablesContainer.addEventListener('click', function(event){
       thisBooking.initTables(event);
