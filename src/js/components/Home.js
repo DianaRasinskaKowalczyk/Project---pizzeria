@@ -38,7 +38,6 @@ class Home{
   }
 
   activatePage(pageId){
-    const thisHome= this;
 
     const pages = document.querySelector(select.containerOf.pages).children;
     const navLinks = document.querySelectorAll(select.nav.links);

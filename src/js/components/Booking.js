@@ -272,8 +272,7 @@ class Booking{
   }
  
   /* NEW make function sendOrder */
-  sendBooking(event){
-    event.preventDefault();
+  sendBooking(){
     const thisBooking = this;
 
     const url = settings.db.url + '/' + settings.db.bookings;
