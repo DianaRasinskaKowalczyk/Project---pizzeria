@@ -1,5 +1,5 @@
-import { select, templates } from '../settings.js';
-// import {app} from '../app.js';
+import { select, templates, classNames } from '../settings.js';
+
 
 class Home{
   constructor(element){
@@ -37,16 +37,41 @@ class Home{
     });
   }
 
+  activatePage(pageId){
+    const thisHome= this;
+
+    const pages = document.querySelector(select.containerOf.pages).children;
+    const navLinks = document.querySelectorAll(select.nav.links);
+
+    for(const page of pages){
+      if(page.id !== pageId){
+        page.classList.remove(classNames.pages.active);
+      }else{
+        page.classList.add(classNames.pages.active);
+      }
+    }
+
+    for(const navLink of navLinks){
+      if(!navLink.href.includes(pageId)){
+        navLink.classList.remove(classNames.pages.active);
+      }else{
+        navLink.classList.add(classNames.pages.active);
+
+      }
+    }
+    window.location.hash = '#/' + '/pageId';
+  }
+
   initLink(){
     const thisHome = this;
-    thisHome.dom.wrapper.onlineOrder.addEventListener('click', function(){
+    thisHome.dom.wrapper.onlineOrder.addEventListener('click', function(event){
+      event.preventDefault();
       thisHome.activatePage('order');
-      window.location.hash = '#/' +'/order';
     });
 
-    thisHome.dom.wrapper.bookTable.addEventListener('click', function(){
+    thisHome.dom.wrapper.bookTable.addEventListener('click', function(event){
+      event.preventDefault();
       thisHome.activatePage('booking');
-      window.location.hash = '#/' + '/booking';
     });
   }
 }

@@ -93,7 +93,7 @@
 
 .carousel-cell {
   width: 100%; 
-  height: 100%; 
+  height: 200px; 
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -191,11 +191,11 @@
 
 .image-box:hover .icon-wrapper i{
   visibility: visible;
-  color: $color-light;
 }
 
-.icon-wrapper:hover i {
+.icon-wrapper > a:hover i {
   color: $color-danger;
+  transform: scale(1.25);
 }
 
 .image-box::after {
